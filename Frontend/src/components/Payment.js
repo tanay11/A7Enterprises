@@ -56,7 +56,7 @@ handleDelivery=()=>{
 
 getUser=()=>{
 console.log("this.props.email",this.email)
-  axios.get('http://localhost:4000/users?email='+this.props.email)
+  axios.get('http://localhost:3030/users?email='+this.props.email)
             .then(response => {
                 this.setState({
                   id:response.data[0].id,
@@ -89,7 +89,7 @@ sendCompleteProduct=()=>{
     zipcode:this.state.zipcode,
     product:this.product
   }
-  axios.put('http://localhost:4000/users/'+this.state.id,newCustomer)
+  axios.put('http://localhost:3030/users/'+this.state.id,newCustomer)
             .then(response => {
                 
                 console.log("put response",this.product)

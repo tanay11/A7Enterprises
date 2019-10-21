@@ -59,7 +59,7 @@ export default class Login extends Component {
   }
 
   getUser=()=>{
-    axios.get('http://localhost:4000/users?email='+this.props.email)
+    axios.get('http://localhost:3030/users?email='+this.props.email)
     .then(response => {
       
       this.props.getRegistered(true);

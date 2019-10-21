@@ -95,7 +95,7 @@ export default class Register extends Component {
 		};
 		console.log("new customer prints", newCustomer)
 		console.log(`Form submitted:`);
-		axios.get('http://localhost:4000/users?email='+this.props.email)
+		axios.get('http://localhost:3030/users?email='+this.props.email)
 		.then(response => {
 			this.registerHim=false;
 				alert("Hi , You are already Registered, Please use login")
@@ -118,7 +118,7 @@ export default class Register extends Component {
 				});
 
 			axios
-				.post("http://localhost:4000/users", newCustomer)
+				.post("http://localhost:3030/users", newCustomer)
 				.then(res => {
 					console.log(res.data)
 					this.props.history.push('/');
