@@ -6,11 +6,12 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "babel index.js --out-dir build",
-		"client":"npm start --prefix ../lucian",
+		"client":"npm start --prefix ../frontend",
 		"server": "babel-watch index.js",
-		"dev":"concurrently \"npm run server\" \"npm run client\""
+		"dev":"concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild":"npm install --prefix ../frontend && npm run build --prefix ../frontend"
 	},
-	"author": "Omkar",
+	"author": "Tanay",
 	"license": "ISC",
 	"dependencies": {
 		"@babel/core": "^7.6.0",
