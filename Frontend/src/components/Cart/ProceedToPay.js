@@ -25,23 +25,13 @@ overflow-y:scroll;
 export default class ProceedToPay extends Component {
 
   sendUserCart=()=>{
-    const currentUser={}
-    axios.get('http://localhost:4000/users?email='+this.props.emailId)
-    .then(response => {
-      currentUser={
-          id:response.data[0].id,
-          name:response.data[0].name,
-          emailId:response.data[0].emailId,
-          contact:response.data[0].contact,
-          product:this.props.cart
-      }
-
-        console.log("Now User ",this.state.name,this.state.user)
-        console.log("Response Login ",response.data)
-      })
-      .catch(function(error) {
-        alert("Enable to Proceed ... Try again")
-    })
+    const currentUser={
+      name:this.props.name,
+      userEmail:this.props.emailId,
+      email:"a7.nasik@gmail.com",
+      product:this.props.cart
+  }
+    
 
     axios
 				.post("http://localhost:3002/api/form", currentUser)
@@ -49,7 +39,7 @@ export default class ProceedToPay extends Component {
 					console.log("Getting ", response);
 				})
 				.catch(err => {
-					console.log("Trying to print ", err);
+					alert("We didn't got your cart Info.. Please Contact - 8007646656")
 				});
   }
     
@@ -99,7 +89,7 @@ export default class ProceedToPay extends Component {
                 
                 <h5>
                   <span className="text-title">Your total :</span>{" "}
-                  <strong>$ {cartTotal} </strong>
+                  <strong>₹ {cartTotal} </strong>
                 </h5>
                 {/* <PayPalButton
                   totalAmount={cartTotal}

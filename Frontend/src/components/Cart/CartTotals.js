@@ -44,6 +44,7 @@ handlePayment() {
       discount,
       emailId
     } = this.props.value;
+    console.log("proceed to ka value",this.props.value.emailId)
     const { history } = this.props;
     const emptyCart = cart.length === 0 ? true : false;
     return (
@@ -91,10 +92,11 @@ handlePayment() {
                 {
                   this.state.payment?
                    <ProceedToPay cart={this.props.value.cart} 
+                                 name={this.props.value.name}
                                  cartTotal={this.props.value.cartTotal} 
                                  clearCart={this.props.value.clearCart}
                                  isRegistered={this.props.value.isRegistered}
-                                 emailId={emailId}/>: null
+                                 emailId={this.props.value.emailId}/>: null
                 }
 
                

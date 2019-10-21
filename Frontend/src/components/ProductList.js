@@ -104,6 +104,10 @@ export default class ProductList extends Component {
     index:0,
     showbaji:false
   };
+  componentDidMount() {
+		
+    window.scrollTo(0, 0);
+  }
 
   onClickForward=()=>{
     if(this.state.index+1===DLImages.length){
@@ -161,7 +165,7 @@ export default class ProductList extends Component {
           <WrapperContainer>
           <div className="toolbar"> 
           <span className="extra-btn">
-          <DownloadBtn onClick={this.toggleDownload}><span><DLIcon className="menuicon"/>{"  "}Application/Implementation</span></DownloadBtn>
+         {!this.state.showbaji? <DownloadBtn onClick={this.toggleDownload}><span><DLIcon className="menuicon"/>{"  "}Application/Implementation</span></DownloadBtn>:null}
           <MenuButton onClick={this.scrollToTopWithCallback}><span><Menu className="menuicon"/>{"  "}Our Products</span></MenuButton>
 
           </span>

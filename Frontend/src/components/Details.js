@@ -22,6 +22,10 @@ export default class Details extends Component {
     // This binding is necessary to make `this` work in the callback
     this.handlePress = this.handlePress.bind(this);
   }
+  componentDidMount() {
+		
+    window.scrollTo(0, 0);
+  }
   
   handlePress(){
     this.clicked=true;
@@ -98,15 +102,11 @@ export default class Details extends Component {
                   <button className={`${rang ? rang[rang.length-1]=="Narangi"?'button-active':'my-button':'my-button'}`} name="red" value="Narangi" onClick={value.handleColor}>
                   <img src="img/narangi.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button className={`${rang ? rang[rang.length-1]=="GreenGold"?'button-active':'my-button':'my-button'}`} value="GreenGold" onClick={value.handleColor}>
-                  <img src="img/greengold.png" className="img-fluid" alt="" />
-                  </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                 
                   <button className={`${rang ? rang[rang.length-1]=="Jamuni"?'button-active':'my-button':'my-button'}`} value="Jamuni" onClick={value.handleColor}>
                   <img src="img/jamuni.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button className={`${rang ? rang[rang.length-1]=="JollyHolly"?'button-active':'my-button':'my-button'}`} value="JollyHolly" onClick={value.handleColor}>
-                  <img src="img/jolly holly.png" className="img-fluid" alt="" />
-                  </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                 
                   <button className={`${rang ? rang[rang.length-1]=="Lemon"?'button-active':'my-button':'my-button'}`} value="Lemon" onClick={value.handleColor}>
                   <img src="img/lemon.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,9 +119,7 @@ export default class Details extends Component {
                   <button className={`${rang ? rang[rang.length-1]=="Maroon"?'button-active':'my-button':'my-button'}`} value="Maroon" onClick={value.handleColor}>
                   <img src="img/maroon.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button className={`${rang ? rang[rang.length-1]=="Mehendi"?'button-active':'my-button':'my-button'}`} value="Mehendi" onClick={value.handleColor}>
-                  <img src="img/mehendi.png" className="img-fluid" alt="" />
-                  </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                  
                   <button className={`${rang ? rang[rang.length-1]=="NagpuriOrange"?'button-active':'my-button':'my-button'}`} value="NagpuriOrange" onClick={value.handleColor}>
                   <img src="img/nagpuri orange.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -131,9 +129,7 @@ export default class Details extends Component {
                   <button className={`${rang ? rang[rang.length-1]=="OxfordBlue"?'button-active':'my-button':'my-button'}`} value="OxfordBlue" onClick={value.handleColor}>
                   <img src="img/oxford blue.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button className={`${rang ? rang[rang.length-1]=="Revel"?'button-active':'my-button':'my-button'}`} value="Revel" onClick={value.handleColor}>
-                  <img src="img/Revel.png" className="img-fluid" alt="" />
-                  </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                 
                   <button className={`${rang ? rang[rang.length-1]=="SignalRed"?'button-active':'my-button':'my-button'}`} value="SignalRed" onClick={value.handleColor}>
                   <img src="img/signal red.png" className="img-fluid" alt="" />
                   </button> &nbsp;&nbsp;&nbsp;&nbsp;

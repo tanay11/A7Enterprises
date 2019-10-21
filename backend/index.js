@@ -8,7 +8,7 @@ const fs = require('fs')
 const http=require('http')
 const Path=require('path')
 const app = express();
-// require('dotenv').config();
+require('dotenv').config();
 
 
 const cors = (req, res, next) => {
@@ -76,21 +76,21 @@ app.get("/file",function(req,res){
 app.post("/api/form", (req, res) => {
 	//res.send(bodyParser(req));
 	//console.log(bodyParser(req));
-	console.log("Alag sa identify",req.body)
+	console.log("Alag sa identify",req.body.email)
 	res.setHeader("Content-Type", "application/json");
 	res.write("you posted:\n");
 	res.end(JSON.stringify(req.body, null, 2));
 	var transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: "tanaymainkar25@gmail.com",
-			pass: "tannu5934"
+			user: "a7.nasik@gmail.com",
+			pass: "Avisha@1979"
 		}
 	});
 	const mailOptions = {
-		from: "tanaymainkar25@gmail.com", // sender address
+		from: "a7.nasik@gmail.com", // sender address
 		to: req.body.email,
-		cc:"", // list of receivers
+		cc:"a7.nasik@gmail.com", // list of receivers
 		subject: "Registration successful", // Subject line
 		html: `<div><h2>Lucian Paints Welcomes You..</h2> <br/>Details -  ${JSON.stringify(req.body)}</div>`
 		

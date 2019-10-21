@@ -6,11 +6,8 @@ import styled from "styled-components";
 const slideImages = [
     "img/firstSlide.jpg",
     "img/homeScreen.jpg",
-    "img/thirdSlide.jpg",
     "img/slideimg.jpg",
-    "img/pixlr.jpg",
-    "img/fifthSlide.jpg",
-    "img/sixthSlide.jpg"
+    "img/pixlr.jpg"
 ];
  
 const properties = {

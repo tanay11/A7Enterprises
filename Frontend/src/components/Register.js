@@ -3,6 +3,7 @@ import axios from "axios";
 import { ProductConsumer } from "../context";
 import styled from "styled-components";
 import validator from "validator";
+import { browserHistory } from 'react-router';
 
 
 const Wrapper = styled.div`
@@ -36,7 +37,13 @@ export default class Register extends Component {
 			nameIsValid: false,
 			emailIsValid: false
 		};
+		
+		this.registerHim =true
 	}
+	componentDidMount() {
+		
+		  window.scrollTo(0, 0);
+	  }
 
 	onChangeContact(e) {
 		this.setState({
@@ -88,9 +95,18 @@ export default class Register extends Component {
 		};
 		console.log("new customer prints", newCustomer)
 		console.log(`Form submitted:`);
+		axios.get('http://localhost:4000/users?email='+this.props.email)
+		.then(response => {
+			this.registerHim=false;
+				alert("Hi , You are already Registered, Please use login")
+		  })
+		  .catch(function(error) {
+			console.log(error)
+		})
 		alert("Are you sure .. If all the details are correct press Submit")
 
-		if (this.state.nameIsValid && this.state.emailIsValid) {
+
+		if (this.state.nameIsValid && this.state.emailIsValid && this.registerHim ) {
 
 			axios
 				.post("http://localhost:3002/api/form", newCustomer)
@@ -103,7 +119,12 @@ export default class Register extends Component {
 
 			axios
 				.post("http://localhost:4000/users", newCustomer)
-				.then(res => console.log(res.data));
+				.then(res => {
+					console.log(res.data)
+					this.props.history.push('/');
+					alert("Check Your Profile Now ")
+				}
+				);
 			alert("Registered Successfully");
 
 			this.setState({
@@ -192,9 +213,6 @@ export default class Register extends Component {
 									/>
 								</div>
 								<center>
-									<p>
-										Please Double click to submit this form
-									</p>
 									<div className="form-group mx-sm-4 mb-4">
 										<input
 											type="button"

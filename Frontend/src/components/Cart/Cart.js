@@ -15,6 +15,12 @@ const WrapperContainer=styled.div`
 `
 
 export default class Store extends Component {
+
+  componentDidMount() {
+		
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <section>

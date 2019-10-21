@@ -36,6 +36,11 @@ export default class Login extends Component {
     };
   }
 
+  componentDidMount() {
+		
+    window.scrollTo(0, 0);
+  }
+
   validateForm() {
     return this.state.emailId.length > 0 ;
   }
