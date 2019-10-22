@@ -27,7 +27,6 @@ export default class Store extends Component {
         <ProductConsumer>
           {value => {
             const { cart } = value;
-            console.log("After want to see, checking inside cart js",cart)
             if (cart.length > 0) {
               return (
                 <React.Fragment>

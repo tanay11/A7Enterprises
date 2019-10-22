@@ -91,11 +91,6 @@ export default class ProceedToPay extends Component {
                   <span className="text-title">Your total :</span>{" "}
                   <strong>₹ {cartTotal} </strong>
                 </h5>
-                {/* <PayPalButton
-                  totalAmount={cartTotal}
-                  clearCart={clearCart}
-                  history={history}
-                /> */}
                 
               </div>
             </div>

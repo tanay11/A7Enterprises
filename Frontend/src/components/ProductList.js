@@ -6,19 +6,19 @@ import { storeProducts } from "../data";
 import styled from "styled-components";
 import SlideShow from "./Slider"
 import { ProductConsumer } from "../context";
-import {ReactComponent as ProfileIcon} from '../icons/profile.svg';
-import {ReactComponent as LoginIcon} from '../icons/user.svg';
-import {ReactComponent as DLIcon} from '../icons/download.svg';
-import {ReactComponent as Menu} from '../icons/menu.svg';
-import {About} from './About';
+import { ReactComponent as ProfileIcon } from '../icons/profile.svg';
+import { ReactComponent as LoginIcon } from '../icons/user.svg';
+import { ReactComponent as DLIcon } from '../icons/download.svg';
+import { ReactComponent as Menu } from '../icons/menu.svg';
+import { About } from './About';
 import axios from 'axios';
 
-const ProductsCont=styled.div`
+const ProductsCont = styled.div`
   display:grid;
   grid-template-columns:50% 50%;
   padding: 0 7rem;
 `
-const DeliveryButton=styled.button`
+const DeliveryButton = styled.button`
 border: 2px solid white;
 border-radius: 50px 20px;
 margin-right:10px;
@@ -36,7 +36,7 @@ display:block;
 }
 }
 `
-const DownloadBtn=styled.button`
+const DownloadBtn = styled.button`
 background: transparent;
     border: none;
     color: silver;
@@ -52,12 +52,12 @@ background: transparent;
      }
   }
 `
-const ImageBtn=styled.button`
+const ImageBtn = styled.button`
 position: absolute;
     transform: translateX(-100%);
   }
 `
-const MenuButton =styled.button`
+const MenuButton = styled.button`
     border: none;
     background: transparent;
     color: cornflowerblue;
@@ -85,7 +85,7 @@ const DLImages = [
   "img/Dealer&Distributor.jpg",
   "img/Dealer&Distributor2.jpg"
 ];
-const WrapperContainer=styled.div`
+const WrapperContainer = styled.div`
   width:100%;
   overflow-x:hidden; 
   @media (max-width: 576px) {
@@ -96,64 +96,62 @@ const WrapperContainer=styled.div`
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
-    this.ProductRef=React.createRef();
-   
+    this.ProductRef = React.createRef();
+
   }
   state = {
     products: storeProducts,
-    index:0,
-    showbaji:false
+    index: 0,
+    showbaji: false
   };
   componentDidMount() {
-		
+
     window.scrollTo(0, 0);
   }
 
-  onClickForward=()=>{
-    if(this.state.index+1===DLImages.length){
+  onClickForward = () => {
+    if (this.state.index + 1 === DLImages.length) {
       this.setState({
-        index:0
+        index: 0
       })
     }
-    else{
+    else {
       this.setState({
-        index:this.state.index+1
+        index: this.state.index + 1
       })
     }
   }
 
-  toggleDownload=()=>{
+  toggleDownload = () => {
     this.setState({
-      showbaji:!this.state.showbaji
+      showbaji: !this.state.showbaji
     })
-    console.log("i am srate toggle",this.state.showbaji)
+    console.log("i am srate toggle", this.state.showbaji)
 
     axios.get("http://localhost:3002/file")
-				.then(response => {
-          console.log("Trying to print ", response);
-          alert("Please Refer to the downloaded excel for more details")
-				})
-				.catch(err => {
-					console.log("Trying to print ", err);
-				});
+      .then(response => {
+        console.log("Trying to print ", response);
+        alert("Please Refer to the downloaded excel for more details")
+      })
+      .catch(err => {
+        console.log("Trying to print ", err);
+      });
   }
-  scrollToTopWithCallback=()=> {
+  scrollToTopWithCallback = () => {
     this.ProductRef.current.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     })
-// let scroller = scrollToComponent(this.props.footerRef, { offset: 0, align: 'top', duration: 200});
-// scroller.on('end', () => console.log('Scrolling end!') );
-}
-  onClickBackward=()=>{
-    if(this.state.index-1==-1){
+  }
+  onClickBackward = () => {
+    if (this.state.index - 1 == -1) {
       this.setState({
-        index:DLImages.length-1
+        index: DLImages.length - 1
       })
     }
-    else{
+    else {
       this.setState({
-        index:this.state.index-1
+        index: this.state.index - 1
       })
     }
   }
@@ -163,38 +161,38 @@ export default class ProductList extends Component {
       <React.Fragment>
         <ProductWrapper>
           <WrapperContainer>
-          <div className="toolbar"> 
-          <span className="extra-btn">
-         {!this.state.showbaji? <DownloadBtn onClick={this.toggleDownload}><span><DLIcon className="menuicon"/>{"  "}Application/Implementation</span></DownloadBtn>:null}
-          <MenuButton onClick={this.scrollToTopWithCallback}><span><Menu className="menuicon"/>{"  "}Our Products</span></MenuButton>
+            <div className="toolbar">
+              <span className="extra-btn">
+                {!this.state.showbaji ? <DownloadBtn onClick={this.toggleDownload}><span><DLIcon className="menuicon" />{"  "}Application/Implementation</span></DownloadBtn> : null}
+                <MenuButton onClick={this.scrollToTopWithCallback}><span><Menu className="menuicon" />{"  "}Our Products</span></MenuButton>
 
-          </span>
-               
-          {this.state.showbaji ? <div style={{'display':'flex'}}> <button className="imageBtn" onClick={this.onClickBackward}>{" << "}</button>
-                  <img src={DLImages[this.state.index]} alt=""/><ImageBtn className="imageBtn" onClick={this.toggleDownload}>Close</ImageBtn>
-<button className="imageBtn" onClick={this.onClickForward}>{" >> "}</button></div>:""}
-                <Link to="/register">
-              <DeliveryButton><span><ProfileIcon className="carticon"/>{"  "}Register</span></DeliveryButton></Link>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+
+              {this.state.showbaji ? <div style={{ 'display': 'flex' }}> <button className="imageBtn" onClick={this.onClickBackward}>{" << "}</button>
+                <img src={DLImages[this.state.index]} alt="" /><ImageBtn className="imageBtn" onClick={this.toggleDownload}>Close</ImageBtn>
+                <button className="imageBtn" onClick={this.onClickForward}>{" >> "}</button></div> : ""}
+              <Link to="/register">
+                <DeliveryButton><span><ProfileIcon className="carticon" />{"  "}Register</span></DeliveryButton></Link>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/Login">
-              <DeliveryButton><span><LoginIcon className="carticon"/>{"  "}Login</span></DeliveryButton></Link></div>
-            <SlideShow className="height-control"/>
+                <DeliveryButton><span><LoginIcon className="carticon" />{"  "}Login</span></DeliveryButton></Link></div>
+            <SlideShow className="height-control" />
             <div ref={this.ProductRef}>
-            <Title name="our" title="products" />
-            <ProductsCont>
-              <h3 style={{"marginLeft":"15rem","marginTop":"2rem","textShadow":"2px 0 grey"}}>Interior</h3>
-              <h3 style={{"marginLeft":"15rem","marginTop":"2rem","textShadow":"2px 0 grey"}}>Exterior</h3>
-              
-              <ProductConsumer id="nav-id">
-                {value => {
-                  return value.products.map(product => {
-                    return <Product key={product.id} product={product} />;
-                  });
-                }}
-              </ProductConsumer>
-            </ProductsCont>
+              <Title name="our" title="products" />
+              <ProductsCont>
+                <h3 style={{ "marginLeft": "15rem", "marginTop": "2rem", "textShadow": "2px 0 grey" }}>Interior</h3>
+                <h3 style={{ "marginLeft": "15rem", "marginTop": "2rem", "textShadow": "2px 0 grey" }}>Exterior</h3>
+
+                <ProductConsumer id="nav-id">
+                  {value => {
+                    return value.products.map(product => {
+                      return <Product key={product.id} product={product} />;
+                    });
+                  }}
+                </ProductConsumer>
+              </ProductsCont>
             </div>
-            <About/>
+            <About />
 
           </WrapperContainer>
 

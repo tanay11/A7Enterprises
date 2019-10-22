@@ -4,9 +4,9 @@ import { tableData } from "./data/tableData";
 import Nexmo from "nexmo";
 import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
-const fs = require('fs')  
-const http=require('http')
-const Path=require('path')
+const fs = require('fs')
+const http = require('http')
+const Path = require('path')
 const app = express();
 require('dotenv').config();
 
@@ -35,48 +35,48 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.get("/api/table", function(req, res) {
+app.get("/api/table", function (req, res) {
 	res.status(200).send(tableData);
 });
 
-app.get("/file",function(req,res){
+app.get("/file", function (req, res) {
 	// let url = 'https://drive.google.com/open?id=1vzK4YvK5LXyXzgvf5D1-vf2OP1QhEGpu'
 	// let dest = Path.resolve(__dirname, 'lucian.xlsx')
 	// var download = function(url, dest, cb) {
-		const downloadPath=process.chdir('C:/Users/HP/Downloads')
-		const pathUsed=require('path').basename(`${downloadPath}`);
-		try {
-			
-			console.log(`New directory: ${process.cwd()}`);
-		  } catch (err) {
-			console.error(`chdir: ${err}`);
-		  }
-		  console.log(Path.resolve(pathUsed, 'lucian.xlsx'))
-		var file = fs.createWriteStream(Path.resolve(process.cwd(), 'lucian.xls'));
-		var request = http.get('http://drive.google.com/open?id=1vzK4YvK5LXyXzgvf5D1-vf2OP1QhEGpu', function(response) {
-		  response.pipe(file);
-		  file.on('finish', function() {
+	const downloadPath = process.chdir('C:/Users/HP/Downloads')
+	const pathUsed = require('path').basename(`${downloadPath}`);
+	try {
+
+		console.log(`New directory: ${process.cwd()}`);
+	} catch (err) {
+		console.error(`chdir: ${err}`);
+	}
+	console.log(Path.resolve(pathUsed, 'lucian.xlsx'))
+	var file = fs.createWriteStream(Path.resolve(process.cwd(), 'lucian.xls'));
+	var request = http.get('http://drive.google.com/open?id=1vzK4YvK5LXyXzgvf5D1-vf2OP1QhEGpu', function (response) {
+		response.pipe(file);
+		file.on('finish', function () {
 			file.close();
 			console.log("File download Success")
-		  });
-		  file.on("error", err => {
-            file.close();
+		});
+		file.on("error", err => {
+			file.close();
 
-            if (err.code === "EEXIST") {
+			if (err.code === "EEXIST") {
 				reject("File already exists");
 				alert("Already Downloaded")
-            } else {
-                fs.unlink(Path.resolve(__dirname, 'lucian.xlsx'), () => {}); // Delete temp file
-                reject(err.message);
-            }
-        })
-		});
+			} else {
+				fs.unlink(Path.resolve(__dirname, 'lucian.xlsx'), () => { }); // Delete temp file
+				reject(err.message);
+			}
+		})
+	});
 })
 
 app.post("/api/form", (req, res) => {
 	//res.send(bodyParser(req));
 	//console.log(bodyParser(req));
-	console.log("Alag sa identify",req.body.email)
+	console.log("Alag sa identify", req.body.email)
 	res.setHeader("Content-Type", "application/json");
 	res.write("you posted:\n");
 	res.end(JSON.stringify(req.body, null, 2));
@@ -90,22 +90,22 @@ app.post("/api/form", (req, res) => {
 	const mailOptions = {
 		from: "a7.nasik@gmail.com", // sender address
 		to: req.body.email,
-		cc:"a7.nasik@gmail.com", // list of receivers
+		cc: "a7.nasik@gmail.com", // list of receivers
 		subject: "Registration successful", // Subject line
 		html: `<div><h2>Lucian Paints Welcomes You..</h2> <br/>Details -  ${JSON.stringify(req.body)}</div>`
-		
+
 		// plain text body
 	};
-	transporter.sendMail(mailOptions, function(err, info) {
+	transporter.sendMail(mailOptions, function (err, info) {
 		if (err) console.log(err);
 		else console.log(info);
 	});
 });
 
-if(process.env.NODE_ENV==="production"){
+if (process.env.NODE_ENV === "production") {
 	app.use(express.static('frontend/build'));
-	app.get('*',(req,res)=>{
-		res.sendFile(path.resolve(__dirname,"frontend/","build","index.html"))
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, "frontend/", "build", "index.html"))
 	})
 }
 

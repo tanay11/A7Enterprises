@@ -10,14 +10,12 @@ import Default from "./components/Default";
 import Cart from "./components/Cart";
 import Modal from "./components/Modal";
 import { ProductConsumer } from "./context";
-import ProceedToPay from "./components/Cart/ProceedToPay"
 import Register from "./components/Register"
 import Payment from "./components/Payment"
 import Login from "./components/Login";
-import Profile from "./components/Profile";
 import LoginBg from "./icons/lucianbg1.jpg"
 import PaymentBg from "./icons/shadesBrush.jpg"
-import RegisterBg from "./icons/lucian_bg_3.jpg"
+import RegisterBg from "./icons/lucianbg3.jpg"
 
 class App extends Component {
   constructor(props) {
@@ -33,8 +31,6 @@ class App extends Component {
       <ProductConsumer>
         {value => {
           const { cart } = value;
-console.log("is registered ",value.isRegistered)
-console.log("cart ",value)
           
             return (
               <React.Fragment>     

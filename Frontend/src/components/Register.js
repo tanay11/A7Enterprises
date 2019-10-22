@@ -3,7 +3,6 @@ import axios from "axios";
 import { ProductConsumer } from "../context";
 import styled from "styled-components";
 import validator from "validator";
-import { browserHistory } from 'react-router';
 
 
 const Wrapper = styled.div`

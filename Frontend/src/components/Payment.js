@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ProductConsumer } from "../context";
 import axios from 'axios';
 
 const PaymentDiv=styled.div`

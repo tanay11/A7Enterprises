@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { ProductConsumer } from "../context";
 import axios from 'axios';
 import "./Login.css";
 import Profile from './Profile'
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LoginWrapper=styled.div`

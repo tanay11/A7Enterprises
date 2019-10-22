@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PayPalButton from "./PayPalButton";
 import { Link } from "react-router-dom";
 import ProceedToPay from "./ProceedToPay";
 export default class CartTotals extends Component {
@@ -80,11 +79,6 @@ handlePayment() {
                   <span className="text-title"> total :</span>{" "}
                   <strong>₹ {cartTotal} </strong>
                 </h5>
-                {/* <PayPalButton
-                  totalAmount={cartTotal}
-                  clearCart={clearCart}
-                  history={history}
-                /> */}
 
                 <button className="btn btn-outline-danger text-uppercase mb-3 px-5"
                     type="button" onClick={this.handlePayment}

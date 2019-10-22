@@ -1,84 +1,81 @@
 import React, { Component } from "react";
-import {BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {ReactComponent as Logo} from '../icons/logo.svg'
-import {ReactComponent as Cart} from '../icons/cart.svg'
-import { ButtonContainer } from "./Button";
+import { ReactComponent as Logo } from '../icons/logo.svg'
+import { ReactComponent as Cart } from '../icons/cart.svg'
 import Profile from "./Profile"
 
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      active:false,
+    this.state = {
+      active: false,
       modal: false
     }
   }
-  scrollToTopWithCallback=()=> {
-        this.props.footerRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-    // let scroller = scrollToComponent(this.props.footerRef, { offset: 0, align: 'top', duration: 200});
-    // scroller.on('end', () => console.log('Scrolling end!') );
+  scrollToTopWithCallback = () => {
+    this.props.footerRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
   }
-  toggle=()=> {
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   }
-  
+
   render() {
-    const {name,isRegistered}=this.props;
+    const { name, isRegistered } = this.props;
     return (
-      
+
       <Nav>
-           <Logo className="icon"/>
-        
+        <Logo className="icon" />
+
         <div className="Title">
-            <Link to="/" className="nav-link">
+          <Link to="/" className="nav-link">
             <img src="img/LucianPE.png" className="Lucian-img" alt="" />
-            </Link>
+          </Link>
         </div>
 
         {/* { this.props.name.length>0 ?<h4>Hi {this.props.name}  !!!</h4>:null} */}
         <div className="nav-icons">
-        <button className="nav-btn" value="Home"><Link to="/">Home</Link></button>
-               <button className="nav-btn" value="About" onClick={()=>this.scrollToTopWithCallback()}>
-                About
+          <button className="nav-btn" value="Home"><Link to="/">Home</Link></button>
+          <button className="nav-btn" value="About" onClick={() => this.scrollToTopWithCallback()}>
+            About
                 </button>
-              <button className="nav-btn"  value="Profile" onClick={()=>this.toggle()}>
-                Profile
+          <button className="nav-btn" value="Profile" onClick={() => this.toggle()}>
+            Profile
                 </button>
-                {this.state.modal?<Profile modal={this.state.modal} name={name} isRegistered={isRegistered} toggle={this.toggle}/>:null}
-              <button className="nav-btn"  onClick={()=>this.scrollToTopWithCallback()}>
-                Contact
+          {this.state.modal ? <Profile modal={this.state.modal} name={name} isRegistered={isRegistered} toggle={this.toggle} /> : null}
+          <button className="nav-btn" onClick={() => this.scrollToTopWithCallback()}>
+            Contact
               </button>
 
-             
-          <CartButton>
-          <Link to="/cart">
-         
-              <Cart className="carticon"/>
-              <MobSpan className="mob-window">   
-           {"  "} Cart</MobSpan>
-           </Link>
-          </CartButton>
-        
-            </div>
 
-        
+          <CartButton>
+            <Link to="/cart">
+
+              <Cart className="carticon" />
+              <MobSpan className="mob-window">
+                {"  "} Cart</MobSpan>
+            </Link>
+          </CartButton>
+
+        </div>
+
+
       </Nav>
     );
   }
 }
-const MobSpan=styled.span`
+const MobSpan = styled.span`
   @media (max-width: 543px) {
     // display:none
   }
 `
 
-const CartButton=styled.button`
+const CartButton = styled.button`
 width: 9%;
 border: 2px solid white;
 border-radius: 50px 20px;
