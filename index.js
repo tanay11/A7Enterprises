@@ -1,7 +1,7 @@
-import express from "express";
+const express = require('express')
 // import cors from "cors";
-import bodyParser from "body-parser";
-import nodemailer from "nodemailer";
+const bodyParser = require('body-parser')
+var nodemailer = require('nodemailer');
 const fs = require('fs')
 const http = require('http')
 const path = require('path')
