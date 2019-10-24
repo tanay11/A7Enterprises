@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "babel index.js --out-dir build",
-		"start": "babel-watch index.js",
+		"start": "node index.js",
 		"client": "npm start --prefix Frontend",
 		"server": "babel-watch index.js",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
