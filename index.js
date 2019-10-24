@@ -67,5 +67,6 @@ if (process.env.NODE_ENV === "production") {
 	})
 }
 
-app.listen(3002);
-console.log("app running on port ", 3002);
+const port = process.env.PORT || 5000;
+app.listen(port);
+console.log("app running on port ", port);

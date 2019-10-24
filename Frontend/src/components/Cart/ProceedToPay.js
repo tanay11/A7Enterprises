@@ -34,7 +34,7 @@ export default class ProceedToPay extends Component {
     
 
     axios
-				.post("http://localhost:3002/api/form", currentUser)
+				.post("http://localhost:5000/api/form", currentUser)
 				.then(response => {
 					console.log("Getting ", response);
 				})
