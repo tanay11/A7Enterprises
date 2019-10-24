@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 const fs = require('fs')
 const http = require('http')
-const Path = require('path')
+const path = require('path')
 const app = express();
 require('dotenv').config();
 
