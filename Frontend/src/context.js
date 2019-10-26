@@ -246,7 +246,7 @@ generateMultipleShade= ()=>{
     let tempCart = [...this.state.cart];
     
     const selectedProduct = tempCart.find(element => {
-      return element.item.id === id;
+      return element.id === id;
     });
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
