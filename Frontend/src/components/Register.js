@@ -84,24 +84,29 @@ export default class Register extends Component {
 		}
 
 		
-		const newCustomer = {
-			name: this.props.name,
-			email: this.props.email,
-			contact: this.state.contact,
-			location: this.state.location,
-			zipcode: this.state.zipcode,
-			product: []
-		};
+			const newCustomer = {
+				name: this.props.name,
+				email: this.props.email,
+				contact: this.state.contact,
+				location: this.state.location,
+				zipcode: this.state.zipcode,
+				product: []
+			};
 		console.log("new customer prints", newCustomer)
 		console.log(`Form submitted:`);
 		axios.get('http://localhost:3030/users?email='+this.props.email)
-		.then(response => {
-			this.registerHim=false;
-				alert("Hi , You are already Registered, Please use login")
-		  })
-		  .catch(function(error) {
-			console.log(error)
-		})
+    	.then(response => {
+			if(response.data.length > 0){
+				this.registerHim=false
+				alert("Hey.. You are already register please try login")
+			}
+        
+
+      })
+      .catch(function(error) {
+		console.log("Register ka error",error)
+		
+    })
 		alert("Are you sure .. If all the details are correct press Submit")
 
 

@@ -159,7 +159,7 @@ generateMultipleShade= ()=>{
   })
   this.setState(()=>{
   return {
-  cart:[...this.state.cart,cartShades],
+  cart:cartShades,
   rang:[]
   }
   },this.addTotals)
@@ -243,15 +243,7 @@ generateMultipleShade= ()=>{
   };
 
   incrementShade = id => {
-    let tempObj = [...this.state.cart];
-    let j=null;
-    tempObj.map((item,i)=>{
-      if(Array.isArray(item)){
-        j=i;
-      }
-    }
-    )
-    let tempCart=tempObj[j];
+    let tempCart = [...this.state.cart];
     
     const selectedProduct = tempCart.find(element => {
       return element.item.id === id;
@@ -286,15 +278,11 @@ generateMultipleShade= ()=>{
   };
 
   decrementShade = id => {
-    let tempObj = [...this.state.cart];
-    let j=null;
-    tempObj.map((item,i)=>{
-      if(Array.isArray(item)){
-        j=i;
-      }
-    }
-    )
-    let tempCart=tempObj[j];
+    console.log(id)
+    
+    let tempCart = [...this.state.cart];
+    console.log("temp cart in context1",tempCart)
+    
     const selectedProduct = tempCart.find(element => {
       return element.id === id;
     });
@@ -305,6 +293,7 @@ generateMultipleShade= ()=>{
       this.removeShade(id);
       tempCart.splice(index,1)
         } 
+        console.log("wps se tempcart",tempCart)
     product.total = product.count * product.price;
     this.setState(() => {
       return {
@@ -403,23 +392,17 @@ generateMultipleShade= ()=>{
     }, this.addTotals);
   };
   removeShade= id => {
-    let tempShades = [...this.state.shades];
     let tempCart = [...this.state.cart];
     tempCart.map((item,i)=>{
-          if(Array.isArray(item)){
-            var f;
-            let removalArr=tempCart[i]
-            var found = removalArr.some(function(item, index) { f = index; return item.id == id; });
-            removalArr.splice(f,1)
-            tempCart[i]=removalArr;
+            if(item.id === id ){
+              tempCart.splice(i,1)
+            }
             
             this.setState(() => {
               return {
-                cart: [...tempCart],
-                shades: [...tempShades]
+                cart: [...tempCart]
               };
             }, this.addTotals);
-          }
         })
     
   };

@@ -41,14 +41,14 @@ app.post("/api/form", (req, res) => {
 	var transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: "a7.nasik@gmail.com",
-			pass: "Avisha@1979"
+			user: "tanaymainkar25@gmail.com",
+			pass: "tannu5934"
 		}
 	});
 	const mailOptions = {
-		from: "a7.nasik@gmail.com", // sender address
+		from: "tanaymainkar25@gmail.com", // sender address
 		to: req.body.email,
-		cc: "a7.nasik@gmail.com", // list of receivers
+		cc: "tanaymainkar25@gmail.com", // list of receivers
 		subject: "Registration successful", // Subject line
 		html: `<div><h2>Lucian Paints Welcomes You..</h2> <br/>Details -  ${JSON.stringify(req.body)}</div>`
 

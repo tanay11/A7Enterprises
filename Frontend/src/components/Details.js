@@ -53,7 +53,7 @@ export default class Details extends Component {
             rang
           } = this.props.newProduct;
           
-          const {key=0}=value.key
+          const {key}=value.key
           return (
             <WrapperContainer>
             <div className="container py-5">
@@ -146,10 +146,10 @@ export default class Details extends Component {
                   <br/>
                   </p>
                   <br/>
-                  {value.key?
+                  {value.key >= 0 &&  id !=9 && id != 10 ?
                     <p className="text-capitalize font-weight-bold mt-3 mb-0">
                     Price&nbsp; :&nbsp;  ₹ &nbsp;&nbsp;
-                    <span className="text-muted lead">{Availability[key].price}</span>
+                    <span className="text-muted lead">{Availability[value.key].price}</span>
                   </p> :null
                   }
                   <br/>

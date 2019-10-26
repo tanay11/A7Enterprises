@@ -4,7 +4,10 @@ import { Slide } from 'react-slideshow-image';
 const slideImages = [
   "img/firstSlide.jpg",
   "img/homeScreen.jpg",
+  "img/thirdSlide.jpg",
   "img/slideimg.jpg",
+  "img/fifthSlide.jpg",
+  "img/sixthSlide.jpg",
   "img/pixlr.jpg"
 ];
 
@@ -46,6 +49,27 @@ const Slideshow = () => {
       <div className="each-slide">
         <div style={{
           'backgroundImage': `url(${slideImages[3]})`, 'backgroundRepeat': 'no-repeat',
+          'backgroundPosition': 'center', 'backgroundSize': 'cover', 'height': `400px`
+        }}>
+        </div>
+      </div>
+      <div className="each-slide">
+        <div style={{
+          'backgroundImage': `url(${slideImages[4]})`, 'backgroundRepeat': 'no-repeat',
+          'backgroundPosition': 'center', 'backgroundSize': 'cover', 'height': `400px`
+        }}>
+        </div>
+      </div>
+      <div className="each-slide">
+        <div style={{
+          'backgroundImage': `url(${slideImages[5]})`, 'backgroundRepeat': 'no-repeat',
+          'backgroundPosition': 'center', 'backgroundSize': 'cover', 'height': `400px`
+        }}>
+        </div>
+      </div>
+      <div className="each-slide">
+        <div style={{
+          'backgroundImage': `url(${slideImages[6]})`, 'backgroundRepeat': 'no-repeat',
           'backgroundPosition': 'center', 'backgroundSize': 'cover', 'height': `400px`
         }}>
         </div>
