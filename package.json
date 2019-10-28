@@ -6,9 +6,10 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "babel index.js --out-dir build",
+		"start": "babel-watch index.js",
 		"client": "npm start --prefix Frontend",
 		"server": "babel-watch index.js",
-		"start": "concurrently \"npm run server\" \"npm run client\"",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
 	},
 	"author": "Tanay",

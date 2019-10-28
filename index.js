@@ -7,9 +7,11 @@ const fs = require('fs')
 const http = require('http')
 const path = require('path')
 const app = express();
-require('dotenv').config();
-
-
+const dotenv=require('dotenv');
+dotenv.config();
+console.log(process.env.NODE_ENV)
+console.log(process.env.PORT)
+console.log(process.env.API_KEY)
 const cors = (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
 	res.header(
@@ -41,7 +43,7 @@ app.post("/api/form", (req, res) => {
 	res.end(JSON.stringify(req.body, null, 2));
 	var transporter = nodemailer.createTransport(sgTransport({
 		auth: {
-			api_key: "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" // your api key here, better hide it in env vars
+			api_key: process.env.API_KEY // your api key here, better hide it in env vars
 		},
 		tls: {
 			// do not fail on invalid certs
