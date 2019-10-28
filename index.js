@@ -1,7 +1,8 @@
 const express = require('express')
 // import cors from "cors";
 const bodyParser = require('body-parser')
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
+const sgTransport = require('nodemailer-sendgrid-transport');
 const fs = require('fs')
 const http = require('http')
 const path = require('path')
@@ -38,19 +39,15 @@ app.post("/api/form", (req, res) => {
 	res.setHeader("Content-Type", "application/json");
 	res.write("you posted:\n");
 	res.end(JSON.stringify(req.body, null, 2));
-	var transporter = nodemailer.createTransport({
-		host: 'smtp.gmail.com',
-		port: 465,
-		secure: true,
+	var transporter = nodemailer.createTransport(sgTransport({
 		auth: {
-			user: "a7.nasik@gmail.com",
-			pass: "Avisha@1979"
+			api_key: "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" // your api key here, better hide it in env vars
 		},
 		tls: {
 			// do not fail on invalid certs
 			rejectUnauthorized: false
 		}
-	});
+	}));
 	const mailOptions = {
 		from: "a7.nasik@gmail.com", // sender address
 		to: req.body.email,

@@ -126,7 +126,7 @@ sendCompleteProduct=()=>{
               />
             </div>:null}
                
-             <label>Please transfer ₹{this.price} to account </label>
+             <label>Please transfer ₹{this.props.price} to account </label>
              <div>Name  :  A7 Enterprises</div>
             <div>Acc. number - 186805001100</div>
             <div>ICICI bank bodhule nagar branch ,IFSC CODE - ICIC0001868</div>
