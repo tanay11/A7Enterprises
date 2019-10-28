@@ -54,7 +54,7 @@ app.post("/api/form", (req, res) => {
 	const mailOptions = {
 		from: "a7.nasik@gmail.com", // sender address
 		to: req.body.email,
-		cc: "a7.nasik@gmail.com", // list of receivers
+		cc: "a7.nasik@gmail.com",
 		subject: "Registration successful", // Subject line
 		html: `<div><h2>Lucian Paints Welcomes You..</h2> <br/>Details -  ${JSON.stringify(req.body)}</div>`
 
