@@ -113,7 +113,7 @@ export default class Register extends Component {
 		if (this.state.nameIsValid && this.state.emailIsValid && this.registerHim ) {
 
 			axios
-				.post("api/form", newCustomer)
+				.post("http://localhost:5000/api/form", newCustomer)
 				.then(response => {
 					console.log("Trying to print ", response);
 				})
