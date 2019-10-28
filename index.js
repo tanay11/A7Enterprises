@@ -9,9 +9,7 @@ const path = require('path')
 const app = express();
 const dotenv=require('dotenv');
 dotenv.config();
-console.log(process.env.NODE_ENV)
-console.log(process.env.PORT)
-console.log(process.env.API_KEY)
+
 const cors = (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
 	res.header(
