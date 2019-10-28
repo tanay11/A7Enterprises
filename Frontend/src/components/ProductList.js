@@ -127,15 +127,6 @@ export default class ProductList extends Component {
       showbaji: !this.state.showbaji
     })
     console.log("i am srate toggle", this.state.showbaji)
-
-    axios.get("http://localhost:5000/file")
-      .then(response => {
-        console.log("Trying to print ", response);
-        alert("Please Refer to the downloaded excel for more details")
-      })
-      .catch(err => {
-        console.log("Trying to print ", err);
-      });
   }
   scrollToTopWithCallback = () => {
     this.ProductRef.current.scrollIntoView({
