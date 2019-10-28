@@ -39,10 +39,16 @@ app.post("/api/form", (req, res) => {
 	res.write("you posted:\n");
 	res.end(JSON.stringify(req.body, null, 2));
 	var transporter = nodemailer.createTransport({
-		service: "gmail",
+		host: 'smtp.gmail.com',
+		port: 465,
+		secure: true,
 		auth: {
 			user: "a7.nasik@gmail.com",
 			pass: "Avisha@1979"
+		},
+		tls: {
+			// do not fail on invalid certs
+			rejectUnauthorized: false
 		}
 	});
 	const mailOptions = {

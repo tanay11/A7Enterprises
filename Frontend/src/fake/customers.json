@@ -247,24 +247,6 @@
         }
       ],
       "id": 27
-    },
-    {
-      "name": "tanay",
-      "email": "tanaymainker25@gmail.com",
-      "contact": "7582038031",
-      "location": "mom",
-      "zipcode": "462042",
-      "product": [],
-      "id": 28
-    },
-    {
-      "name": "anas",
-      "email": "anask@gmail.com",
-      "contact": "754866",
-      "location": "mom",
-      "zipcode": "462042",
-      "product": [],
-      "id": 29
     }
   ]
 }
