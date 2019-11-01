@@ -94,7 +94,7 @@ export default class Register extends Component {
 			};
 		console.log("new customer prints", newCustomer)
 		console.log(`Form submitted:`);
-		axios.get('http://localhost:3030/users?email='+this.props.email)
+		axios.get('https://a7database.herokuapp.com/users?email='+this.props.email)
     	.then(response => {
 			if(response.data.length > 0){
 				this.registerHim=false
@@ -113,16 +113,16 @@ export default class Register extends Component {
 		if (this.state.nameIsValid && this.state.emailIsValid && this.registerHim ) {
 
 			axios
-				.post("http://localhost:5000/api/form", newCustomer)
+				.post("https://a7backend.herokuapp.com/api/form", newCustomer)
 				.then(response => {
 					console.log("Trying to print ", response);
 				})
 				.catch(err => {
-					console.log("Trying to print ", err);
+					console.log("Trying to print error", err);
 				});
 
 			axios
-				.post("http://localhost:3030/users", newCustomer)
+				.post("https://a7database.herokuapp.com/users", newCustomer)
 				.then(res => {
 					console.log(res.data)
 					this.props.history.push('/');

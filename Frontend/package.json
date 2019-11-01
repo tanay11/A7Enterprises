@@ -24,7 +24,7 @@
     "systemjs-builder": "0.15.14"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"json-server --watch ./src/fake/customers.json --port 3030\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
