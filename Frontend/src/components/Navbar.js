@@ -81,19 +81,15 @@ border: 2px solid white;
 border-radius: 50px 20px;
 position: absolute;
 right: 1%;
+top: 1%;
 @media (max-width: 543px) {
   position:unset;
   width: 30%;
   
 }
 .carticon{
-  width:15%;
-  height:2%;
-  @media (max-width: 543px){
-      // width: 50%;
-      // height: 100%;
-}
-}
+  max-width: 16px;
+  max-height: 12px;
 }
 `
 

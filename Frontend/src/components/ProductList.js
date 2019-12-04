@@ -22,18 +22,13 @@ const DeliveryButton = styled.button`
 border: 2px solid white;
 border-radius: 50px 20px;
 margin-right:10px;
-display:block;
 @media only screen and (min-width: 543px){
     width:fit-content;
 }
 .carticon{
-  width:15%;
-  height:2%;
-  @media all (min-width: 543px){
-      // width: 50%;
-      // height: 100%;
-}
-}
+  max-width: 16px;
+  max-height: 12px;
+  margin-right: 5px;
 }
 `
 const DownloadBtn = styled.button`
@@ -163,10 +158,10 @@ export default class ProductList extends Component {
                 <img src={DLImages[this.state.index]} alt="" /><ImageBtn className="imageBtn" onClick={this.toggleDownload}>Close</ImageBtn>
                 <button className="imageBtn" onClick={this.onClickForward}>{" >> "}</button></div> : ""}
               <Link to="/register">
-                <DeliveryButton><span><ProfileIcon className="carticon" />{"  "}Register</span></DeliveryButton></Link>
+                <DeliveryButton><span><ProfileIcon className="carticon" />Register</span></DeliveryButton></Link>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/Login">
-                <DeliveryButton><span><LoginIcon className="carticon" />{"  "}Login</span></DeliveryButton></Link></div>
+                <DeliveryButton><span><LoginIcon className="carticon" />Login</span></DeliveryButton></Link></div>
             <SlideShow className="height-control" />
             <div ref={this.ProductRef}>
               <Title name="our" title="products" />
