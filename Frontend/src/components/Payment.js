@@ -88,7 +88,7 @@ sendCompleteProduct=()=>{
     zipcode:this.state.zipcode,
     product:this.product
   }
-  axios.put('https://a7database.herokuapp.com/users'+this.state.id,newCustomer)
+  axios.put('https://a7database.herokuapp.com/users'+newCustomer)
             .then(response => {
                 
                 console.log("put response",this.product)

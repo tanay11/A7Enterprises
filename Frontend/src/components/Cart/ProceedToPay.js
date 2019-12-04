@@ -25,22 +25,24 @@ overflow-y:scroll;
 export default class ProceedToPay extends Component {
 
   sendUserCart=()=>{
-    const currentUser={
-      name:this.props.name,
-      userEmail:this.props.emailId,
-      email:"a7.nasik@gmail.com",
-      product:this.props.cart
-  }
+  const newCustomer = {
+    name: this.props.name,
+    email: "a7.nasik@gmail.com",
+    contact:"",
+    location: "",
+    zipcode: "",
+    product: this.props.cart
+  };
     
 
-    axios
-				.post("https://a7backend.herokuapp.com/api/form", currentUser)
-				.then(response => {
-					console.log("Getting ", response);
-				})
-				.catch(err => {
-					alert("We didn't got your cart Info.. Please Contact - 8007646656")
-				});
+          axios
+          .post("https://a7backend.herokuapp.com/api/form", newCustomer)
+          .then(response => {
+            console.log("Trying to print ", response);
+          })
+          .catch(err => {
+            console.log("Trying to print error", err);
+          });
   }
     
   render() {
